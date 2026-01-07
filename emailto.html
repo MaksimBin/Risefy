@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>RISefy</title>
+  
+  <style>
+    body {
+    font-size: 15pt;
+    background-color: black;
+    color: white;
+    
+}
+
+h1{
+  color: deepskyblue;
+  width: 100%;
+  text-align: center;
+}
+
+p{
+  color: yellow;
+  text-align: center;
+}
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 15px auto;
+  padding: 15px;
+  width: 90%;
+  height: 300px;
+  box-shadow: 0 0 25px 0px deeppink;
+}
+
+.box-input{
+  margin-bottom: 10px;
+}
+
+
+input{
+  font-size: 1.2rem;
+  outline:none;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: black;
+  color: deeppink;
+    border: 3px deeppink solid;
+    transition-duration: 1s;
+}
+
+
+input:focus{
+  outline:none;
+  border-style: none;
+  border: 3px dodgerblue solid;
+  transition-duration: 1s;
+}
+
+button{
+  margin: 20px auto;
+  border-style: none;
+  background-color: black;
+  box-shadow: 0 0 5px 5px deeppink;
+  color: dodgerblue;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+button:hover{
+box-shadow: 0 0 5px 5px deepskyblue;
+}
+
+.modal{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  color: deepskyblue;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+  </style>
+ 
+</head>
+
+<body>
+  
+  <div class="modal">
+    <div>
+      Произошла ошибка,<br> попробуйте ещё раз
+    </div>
+  </div>
+  
+ 
+      <h1>RISeFY</h1>
+  <p>Восстановление пороля</p>
+ 
+  <div class="container">
+  
+  <div class="box">
+  <div class="box-input">
+        <div>
+          Email
+        </div>
+        <input class="input" id="email" type="email">
+      </div>
+    
+      <div class="box-input">
+        <div>
+          Новый пароль
+        </div>
+        <input class="input" id="password" type="password">
+      </div>
+      
+      <button onclick="asyncPostLike()">Сохранить</button>
+  </div>
+  </div>
+
+<script>
+  
+  const asyncPostLike = async () => {
+    
+    
+  
+   let email = document.getElementById('email').value
+   
+   let password = document.getElementById('password').value
+  
+  console.log(email, password)
+  
+    const response = await fetch("https://risefy-music.ru/auth/changePassword", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "email": email,
+        "password": password
+  
+      })
+    });
+    const status = await response.status;
+    console.log(status)
+    
+    if(status == 200){
+location.href = "index.html"
+    }else{
+      document.querySelector('.modal').style.dysplay = "flex"
+      
+      setTimeout(() => {
+        document.querySelector('.modal').style.dysplay = "none"
+      }, 3000)
+    }
+    
+    
+  }
+  
+</script>
+</body>
+</html>
