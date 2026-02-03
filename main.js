@@ -4,7 +4,7 @@ let mainTrack = [
 {
   artistName: "PromoDJ",
   coverURL: null,
-  musicUrl: "/PRoooooodddd (1)/Stromae_-_Papaoutai_Afro_Soul_AI_cover_80526325.mp3",
+  musicUrl: "Stromae_-_Papaoutai_Afro_Soul_AI_cover_80526325.mp3",
   musicUrlInResources: "",
   playerSoundId: "dfe88ae1-a08f-4424-acc2-ad186076c",
   soundid: 0,
@@ -13,7 +13,7 @@ let mainTrack = [
 {
   artistName: "PromoDJ",
   coverURL: null,
-  musicUrl: "/PRoooooodddd (1)/Dorian_Marko_-_Cornfield_Chase_74055108.mp3",
+  musicUrl: "Dorian_Marko_-_Cornfield_Chase_74055108.mp3",
   musicUrlInResources: "",
   playerSoundId: "dfe88ae1-a08f-4424-acc2-ad186076c",
   soundid: 1,
