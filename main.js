@@ -1946,3 +1946,28 @@ const playSeatch = (params) => {
   backAudio()
   closeCollrctions()
 }
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "Название трека",
+    artist: "Исполнитель",
+    album: "Альбом",
+    artwork: [
+      { src: "icon-192.png", sizes: "192x192", type: "image/png" },
+      { src: "icon-512.png", sizes: "512x512", type: "image/png" }
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    audioPlay();
+  });
+  navigator.mediaSession.setActionHandler('pause', () => {
+    stopAudio();
+  });
+  navigator.mediaSession.setActionHandler('previoustrack', () => {
+    backAudio(); // твоя функция переключения назад
+  });
+  navigator.mediaSession.setActionHandler('nexttrack', () => {
+   nextAudio(); // твоя функция переключения вперёд
+  });
+}
