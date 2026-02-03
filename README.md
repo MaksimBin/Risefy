@@ -45,7 +45,7 @@ RiSeFY — прогрессивное веб‑приложение (PWA) для
 2. Установите PWA через браузер (Android поддерживается напрямую)  
 3. Для Android доступен APK: скачать  
 
-![Audio Banner](scrin.png)
+![Audio Banner](scrin.jpg)
 
 
 ---
