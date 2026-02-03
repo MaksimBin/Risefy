@@ -1,5 +1,26 @@
 let playLists = []
 
+let mainTrack = [
+{
+  artistName: "PromoDJ",
+  coverURL: null,
+  musicUrl: "/PRoooooodddd (1)/Stromae_-_Papaoutai_Afro_Soul_AI_cover_80526325.mp3",
+  musicUrlInResources: "",
+  playerSoundId: "dfe88ae1-a08f-4424-acc2-ad186076c",
+  soundid: 0,
+  title: "Stromae - Papaoutai (Afro Soul AI cover)"
+},
+{
+  artistName: "PromoDJ",
+  coverURL: null,
+  musicUrl: "/PRoooooodddd (1)/Dorian_Marko_-_Cornfield_Chase_74055108.mp3",
+  musicUrlInResources: "",
+  playerSoundId: "dfe88ae1-a08f-4424-acc2-ad186076c",
+  soundid: 1,
+  title: "Dorian_Marko_-_Cornfield_Chase_74055108.mp3"
+}
+  
+]
 
 async function getTracksFromFolder(folderLink) {
   const apiUrl = "https://cloud-api.yandex.net/v1/disk/public/resources";
@@ -33,7 +54,8 @@ async function getTracksFromFolder(folderLink) {
 (async () => {
   const folderLink = "https://disk.yandex.ru/d/PQAcoNhqR92ukw"; // <-- твоя ссылка на папку
   const tracks = await getTracksFromFolder(folderLink);
- playLists = tracks
+  playLists = tracks
+  playLists = [...mainTrack]
 })();
 
 var tokenKey = "accessToken";
@@ -81,9 +103,9 @@ let urlAvtorisation = "https://risefy-music.ru/auth/sign-in"
 
 
 let urlRegistr
-
+// убрать null для регистрации 
 const stateUserPlayer = () => {
-  if (!localStorage.getItem(tokenKey)) {
+  if (localStorage.getItem(tokenKey) == null) {
     document.getElementById("userInfo").style.display = "flex";
     document.querySelector(".auf-container").style.display = "none";
     
@@ -533,7 +555,7 @@ img.crossOrigin = 'Anonymous';
 
 let getCollorsTif = (result) => {
   
-  console.log(result)
+  
   
   img.src = String(result)
   
@@ -561,7 +583,7 @@ let getCollorsTif = (result) => {
         t()
           .then((x) => getColorBody(x))
         
-   });
+      });
     }
   }
 }
@@ -569,6 +591,8 @@ let getCollorsTif = (result) => {
 
 
 const audioPlay = () => {
+  
+  console.log(playLists)
   
   pauseCange = false
   // audio.src = ''
@@ -685,9 +709,9 @@ function restartDraw() {
     cancelAnimationFrame(animationId);
     animationId = null;
   }
-
-draw();
-drawSpectrumEdges()
+  
+  draw();
+  drawSpectrumEdges()
 }
 
 function onload(audio) {
@@ -713,7 +737,7 @@ function onload(audio) {
   
   //console.log(audioContext.state)
   
-    // второй canvas
+  // второй canvas
   canvas2 = document.getElementById('canvas2');
   canvas2.width = window.innerWidth;
   canvas2.height = 200;
@@ -1159,13 +1183,13 @@ const getColorBody = (colorBO) => {
           background-image:url("${colorBGBody[numberBGColor].colorSVG}");
           `
   
-//  document.getElementById//('userInfo').style = `background//-image: url("/PRoooooodddd (1//)/IMG_20251124_193944.jpg");
-//background-size: cover;
-//background-repeat: no-repeat;
-//background-position: bottom;`
+  //  document.getElementById//('userInfo').style = `background//-image: url("/PRoooooodddd (1//)/IMG_20251124_193944.jpg");
+  //background-size: cover;
+  //background-repeat: no-repeat;
+  //background-position: bottom;`
   //`
- // background: rgb//(${colorBGBody[numberBGColor]//.colorFon});
-//  `
+  // background: rgb//(${colorBGBody[numberBGColor]//.colorFon});
+  //  `
   
   FILSTYLE = `rgb(${colorBODY})`
   //colorBGBody[numberBGColor].colorFon
